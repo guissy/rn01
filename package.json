@@ -1,0 +1,31 @@
+{
+  "name": "bbl02",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "watchman watch-del-all && react-native start --reset-cache",
+    "test": "jest",
+    "dev": "react-devtools"
+  },
+  "dependencies": {
+    "native-base": "^2.4.5",
+    "react": "16.3.1",
+    "react-devtools": "^3.2.3",
+    "react-native": "0.55.4",
+    "react-native-slider-button": "^0.1.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^22.2.3",
+    "@types/react": "^16.3.16",
+    "@types/react-native": "^0.55.16",
+    "@types/react-test-renderer": "^16.0.1",
+    "babel-jest": "23.0.1",
+    "babel-preset-react-native": "4.0.0",
+    "jest": "23.1.0",
+    "react-native-typescript-transformer": "^1.2.9",
+    "react-test-renderer": "16.3.1"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}

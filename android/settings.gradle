@@ -1,0 +1,3 @@
+rootProject.name = 'bbl02'
+
+include ':app'
