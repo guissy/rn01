@@ -1,31 +1,25 @@
 import * as React from 'react';
+import { Image, StyleSheet } from 'react-native';
 import {
-  StyleSheet,
-  Image
-} from 'react-native';
-import {
-  StyleProvider,
-  Container,
-  Header,
-  Title,
-  Content,
+  Body,
   Button,
-  Text,
-  Left,
-  Right,
+  Container,
+  Content,
+  Drawer,
   Footer,
   FooterTab,
-  Body,
+  Header,
   Icon,
+  Left,
+  Right,
+  StyleProvider,
+  Text,
+  Title,
   View,
-  Badge,
-  Drawer,
-  Thumbnail,
-  List,
-  ListItem,
 } from 'native-base';
 import getTheme from '../native-base-theme/components/index';
 import platform from '../native-base-theme/variables/platform';
+import Aside from './pages/aside/Aside';
 
 type Props = {};
 
@@ -49,44 +43,7 @@ export default class App extends React.Component<Props> {
       <StyleProvider style={getTheme(platform)}>
         <Drawer
           ref={(ref) => {if (ref) { this.drawer = ref; }}}
-          content={(
-            <Container
-              style={{backgroundColor: '#fff'}}
-            >
-              <Content>
-                <List>
-                  <ListItem>
-                    <Thumbnail source={require('../images/app_ic.jpg')} size={80} />
-                    <Body>
-                    <Text>桂子鼠鼠</Text>
-                    </Body>
-                  </ListItem>
-                </List>
-                <List>
-                  <ListItem >
-                    <Text>电量正常</Text>
-                  </ListItem>
-                  <ListItem>
-                    <Text>设备音量</Text>
-                  </ListItem>
-                  <ListItem>
-                    <Text>消息中心</Text>
-                  </ListItem>
-                  <ListItem>
-                    <Text>成员管理</Text>
-                  </ListItem>
-                  <ListItem last>
-                    <Text>设备管理</Text>
-                  </ListItem>
-                </List>
-              </Content>
-              <Footer style={{backgroundColor: '#fff'}}>
-                <Body>
-                  <Title style={styles.switchDeviceBtn}>切换设备</Title>
-                </Body>
-              </Footer>
-            </Container>
-          )}
+          content={<Aside />}
           onClose={this.closeDrawer}
         >
           <Container>
@@ -113,15 +70,15 @@ export default class App extends React.Component<Props> {
             <Footer style={styles.footer}>
               <FooterTab>
                 <Button vertical>
-                  <Icon name='arrow-back'/>
+                  <Icon name='cloud'/>
                   <Text style={styles.footerTxt}>内容云</Text>
                 </Button>
                 <Button vertical active>
-                  <Icon name='beer' active/>
+                  <Icon name='comments' active type="FontAwesome"/>
                   <Text style={styles.footerTxt}>宝宝连线</Text>
                 </Button>
                 <Button vertical>
-                  <Icon name='cog'/>
+                  <Icon name='user' type="FontAwesome"/>
                   {/*<Badge>*/}
                     {/*<Text>2</Text>*/}
                   {/*</Badge>*/}
@@ -136,22 +93,16 @@ export default class App extends React.Component<Props> {
   }
 }
 
-// import 'react-devtools';
-// import 'react-devtools-core/standalone';
 const Dimensions = require('Dimensions');
 const {width, height} = Dimensions.get('window');
 const styles = StyleSheet.create({
-  switchDeviceBtn: {
-    color: '#999',
-    textAlign: 'center',
-  },
   footer: {
     backgroundColor: '#fff',
   },
   videobg: {
     width: width,
     height: 240,
-    resizeMode: Image.resizeMode.stretch
+    // resizeMode: Image.resizeMode.stretch
   },
   title: {
     fontSize: 20,

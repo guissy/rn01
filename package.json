@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "watchman watch-del-all && react-native start --reset-cache",
+    "start": "watchman watch src && react-native start --reset-cache",
     "test": "jest",
     "dev": "react-devtools"
   },
