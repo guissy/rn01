@@ -210,7 +210,7 @@ export default (variables = variable) => {
     },
     "NativeBase.Thumbnail": {
       ...thumbnailTheme(variables)
-    }
+    },
   };
 
   const cssifyTheme = (grandparent, parent, parentKey) => {

@@ -16,9 +16,13 @@ import {
   Text,
   Thumbnail,
   Title,
+  connectStyle,
+  View,
 } from 'native-base';
+import platform from '../../native-base-theme/variables/platform';
 
 interface Hoc {
+  style: typeof platform;
 }
 
 interface Props extends Partial<Hoc> {
@@ -26,19 +30,21 @@ interface Props extends Partial<Hoc> {
 }
 
 /** Aside */
+@connectStyle('variables')
 export default class Aside extends React.PureComponent<Props, {}> {
 
   state = {};
 
   render(): React.ReactNode {
+    const { style } = this.props as Hoc;
     return (
       <Container
         style={{ backgroundColor: '#fff' }}
       >
         <Content>
-          <List>
+          <List style={{backgroundColor: style.brandPrimary}}>
             <ListItem>
-              <Thumbnail source={require('../../../images/app_ic.jpg')} size={80}/>
+              <Thumbnail source={require('../../images/app_ic.jpg')} size={80}/>
               <Body>
               <Text>桂子鼠鼠</Text>
               </Body>
