@@ -50,6 +50,7 @@ export default class Login extends React.PureComponent<Props, {}> {
                 placeholder="手机号"
                 value={this.state.mobile}
                 onChangeText={(mobile) => {
+                  console.log('☞☞☞ 9527 Login 53', mobile);
                   this.setState({ mobile });
                 }}
               />
@@ -58,7 +59,7 @@ export default class Login extends React.PureComponent<Props, {}> {
               <Input
                 placeholder="密码"
                 value={this.state.password}
-                onChange={(password) => {
+                onChangeText={(password) => {
                   this.setState({ password });
                 }}
               />
@@ -103,7 +104,6 @@ const styles = StyleSheet.create({
     marginTop: 30,
     paddingLeft: 40,
     paddingRight: 40,
-    textAlign: 'center'
   },
   submitTxt: {
     color: '#fff',

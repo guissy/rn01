@@ -1,13 +1,6 @@
 import * as React from 'react';
-import { Easing, StyleSheet } from 'react-native';
-import {
-  createStackNavigator,
-  NavigationScreenConfigProps,
-  withNavigation,
-  createSwitchNavigator,
-  createNavigationContainer,
-  NavigationActions
-} from 'react-navigation';
+import { StyleSheet } from 'react-native';
+import { createStackNavigator, createSwitchNavigator, NavigationScreenConfigProps } from 'react-navigation';
 import { Button, Container, Content, Drawer, Footer, FooterTab, Icon, Text, } from 'native-base';
 import Aside from '../pages/aside/Aside';
 import Chat from './chat/Chat';

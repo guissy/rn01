@@ -11,7 +11,6 @@ interface Hoc {
 }
 
 interface Props extends Partial<Hoc> {
-  openDrawer: () => void;
   screenProps: {
     openDrawer: () => void;
   }
