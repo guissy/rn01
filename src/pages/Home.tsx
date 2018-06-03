@@ -24,18 +24,6 @@ const Screen = createSwitchNavigator(
   },
   {
     initialRouteName: 'Article',
-    // headerMode: 'none',
-    // mode: 'modal',
-    // navigationOptions: {
-    //   header: null,
-    // },
-    // transitionConfig: () => ({
-    //   transitionSpec: {
-    //     duration: 0,
-    //     easing: Easing.linear,
-    //   },
-    //   isModal: false,
-    // })
   },
 );
 
@@ -63,7 +51,6 @@ class Home extends React.Component<Props, {}> {
   render(): React.ReactNode {
     const { navigation } = this.props as Hoc;
     const routeName = this.state.routeName;
-    console.log('☞☞☞ 9527 Home 73', this.props);
     return (
       <Drawer
         ref={(ref) => {
