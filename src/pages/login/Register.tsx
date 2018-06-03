@@ -28,12 +28,13 @@ interface Props extends Partial<Hoc> {
 
 }
 
-/** Register */
-export default class Register extends React.PureComponent<Props, {}> {
+/** Login */
+export default class Login extends React.PureComponent<Props, {}> {
 
   state = {
     mobile: '',
-    password: ''
+    password: '',
+    code: ''
   };
 
   render(): React.ReactNode {
@@ -41,7 +42,7 @@ export default class Register extends React.PureComponent<Props, {}> {
     return (
       <Container>
         <Header>
-          <Title style={styles.title}>登录</Title>
+          <Title style={styles.title}>注册</Title>
         </Header>
         <Content style={styles.content}>
           <Form>
@@ -63,6 +64,15 @@ export default class Register extends React.PureComponent<Props, {}> {
                 }}
               />
             </Item>
+            <Item floatingLabel last success={this.state.code.length >= 4}>
+              <Input
+                placeholder="验证码"
+                value={this.state.code}
+                onChangeText={(code) => {
+                  this.setState({ code });
+                }}
+              />
+            </Item>
             <View style={styles.center} padder>
               <Button
                 rounded
@@ -71,17 +81,7 @@ export default class Register extends React.PureComponent<Props, {}> {
                   navigation.navigate('Home')
                 }
               >
-                <Text style={styles.submitTxt}>登录</Text>
-              </Button>
-            </View>
-            <View style={styles.btns}>
-              <Button
-                transparent={true}
-                onPress={() =>
-                  navigation.navigate('Register')
-                }
-              >
-                <Text>快速注册</Text>
+                <Text style={styles.submitTxt}>注册</Text>
               </Button>
             </View>
           </Form>
@@ -117,9 +117,5 @@ const styles = StyleSheet.create({
   submitTxt: {
     color: '#fff',
     fontSize: 20
-  },
-  btns: {
-    marginTop: 15,
-    marginLeft: 20,
   }
 });

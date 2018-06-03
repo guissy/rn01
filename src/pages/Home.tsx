@@ -7,6 +7,7 @@ import Chat from './chat/Chat';
 import Profile from './profile/Profile';
 import Article from './article/Article';
 import Login from './login/Login';
+import Register from './login/Register';
 
 interface Hoc extends NavigationScreenConfigProps {
 }
@@ -145,6 +146,7 @@ const styles = StyleSheet.create({
 export default createSwitchNavigator({
     Home,
     Login,
+    Register,
   },
   {
     initialRouteName: 'Login'
