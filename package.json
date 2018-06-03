@@ -5,10 +5,13 @@
   "scripts": {
     "start": "watchman watch src && react-native start --reset-cache",
     "test": "jest",
-    "dev": "react-devtools"
+    "dev": "react-devtools",
+    "avds": "emulator -list-avds",
+    "avd": "cd ~/Documents/bbl/bbl_yi && ~/Library/Android/sdk/tools/emulator -avd Nexus_6_API_26"
   },
   "dependencies": {
     "@types/color": "^3.0.0",
+    "@types/react-dom": "^16.0.5",
     "@types/react-navigation": "^2.0.0",
     "native-base": "^2.4.5",
     "react": "16.3.1",

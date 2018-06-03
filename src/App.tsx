@@ -5,7 +5,7 @@ import getTheme from './native-base-theme/components/index';
 import platform from './native-base-theme/variables/platform';
 import Home from './pages/Home';
 
-interface Props extends NavigationScreenConfigProps {
+interface Props {
 }
 
 

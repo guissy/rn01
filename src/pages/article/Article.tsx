@@ -12,6 +12,9 @@ interface Hoc {
 
 interface Props extends Partial<Hoc> {
   openDrawer: () => void;
+  screenProps: {
+    openDrawer: () => void;
+  }
 }
 
 /** Acticle */
@@ -20,7 +23,7 @@ export default class Article extends React.PureComponent<Props, {}> {
   state = {};
 
   render(): React.ReactNode {
-    const { openDrawer } = this.props;
+    const { openDrawer } = this.props.screenProps;
     return (
       <Container>
         <Header>

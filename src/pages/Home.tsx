@@ -1,11 +1,19 @@
 import * as React from 'react';
 import { Easing, StyleSheet } from 'react-native';
-import { createStackNavigator, NavigationScreenConfigProps, withNavigation, createSwitchNavigator } from 'react-navigation';
+import {
+  createStackNavigator,
+  NavigationScreenConfigProps,
+  withNavigation,
+  createSwitchNavigator,
+  createNavigationContainer,
+  NavigationActions
+} from 'react-navigation';
 import { Button, Container, Content, Drawer, Footer, FooterTab, Icon, Text, } from 'native-base';
 import Aside from '../pages/aside/Aside';
 import Chat from './chat/Chat';
 import Profile from './profile/Profile';
 import Article from './article/Article';
+import Login from './login/Login';
 
 interface Hoc extends NavigationScreenConfigProps {
 }
@@ -14,14 +22,14 @@ interface Props extends Partial<Hoc> {
 
 }
 
-const Screen = createStackNavigator(
+const Screen = createSwitchNavigator(
   {
-    Article: { screen: Article, },
-    Chat: { screen: Chat, },
-    Profile: { screen: Profile, },
+    Article,
+    Chat,
+    Profile,
   },
   {
-    initialRouteName: 'Chat',
+    initialRouteName: 'Article',
     // headerMode: 'none',
     // mode: 'modal',
     // navigationOptions: {
@@ -40,7 +48,6 @@ const Screen = createStackNavigator(
 /** Home */
 class Home extends React.Component<Props, {}> {
   static router = Screen.router;
-
   state = {
     routeName: 'Chat'
   };
@@ -60,7 +67,9 @@ class Home extends React.Component<Props, {}> {
   };
 
   render(): React.ReactNode {
+    const { navigation } = this.props as Hoc;
     const routeName = this.state.routeName;
+    console.log('☞☞☞ 9527 Home 73', this.props);
     return (
       <Drawer
         ref={(ref) => {
@@ -73,9 +82,7 @@ class Home extends React.Component<Props, {}> {
       >
         <Container>
           <Content>
-            {routeName === 'Article' && <Article openDrawer={this.openDrawer}/>}
-            {routeName === 'Chat' && <Chat openDrawer={this.openDrawer}/>}
-            {routeName === 'Profile' && <Profile openDrawer={this.openDrawer}/>}
+            <Screen navigation={navigation} screenProps={{ openDrawer: this.openDrawer }}/>
           </Content>
           <Footer style={styles.footer}>
             <FooterTab>
@@ -83,7 +90,7 @@ class Home extends React.Component<Props, {}> {
                 vertical
                 active={routeName === 'Article'}
                 onPress={() => {
-                  // navigation.navigate('Home/Article')
+                  navigation.navigate('Article')
                   this.setState({ routeName: 'Article' });
                 }}
               >
@@ -97,7 +104,7 @@ class Home extends React.Component<Props, {}> {
                 vertical
                 active={routeName === 'Chat'}
                 onPress={() => {
-                  // navigation.navigate('Chat')
+                  navigation.navigate('Chat')
                   this.setState({ routeName: 'Chat' });
                 }}
               >
@@ -112,8 +119,8 @@ class Home extends React.Component<Props, {}> {
                 vertical
                 active={routeName === 'Profile'}
                 onPress={() => {
+                  navigation.navigate('Profile');
                   this.setState({ routeName: 'Profile' });
-                  // navigation.navigate('Profile');
                 }}
               >
                 <Icon
@@ -141,7 +148,13 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Home;
-// export default createSwitchNavigator({
-//   Home: Home, // This screen renders a navigator!
-// });
+// export default Home;
+export default createSwitchNavigator({
+    Home,
+    Login,
+  },
+  {
+    initialRouteName: 'Login'
+  }
+);
+// export default createNavigationContainer(Home);
